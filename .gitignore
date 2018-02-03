@@ -1,0 +1,11 @@
+.DS_Store
+
+# PyCharm
+.idea/
+
+# vim
+.swp
+
+# VS Code
+.vscode/
+
