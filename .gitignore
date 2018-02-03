@@ -4,7 +4,7 @@
 .idea/
 
 # vim
-.swp
+*.swp
 
 # VS Code
 .vscode/

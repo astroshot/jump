@@ -1,0 +1,8 @@
+{
+    "MIN_PRESS_TIME": 200,
+    "screen": {
+        "width": 1080,
+        "height": 1920
+    },
+    "coefficient": 1.392
+}
