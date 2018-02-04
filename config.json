@@ -4,5 +4,9 @@
         "width": 1080,
         "height": 1920
     },
-    "coefficient": 1.392
+    "coefficient": 1.392,
+    "offset": {
+        "x": 39,
+        "y": 189
+    }
 }

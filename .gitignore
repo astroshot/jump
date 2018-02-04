@@ -9,3 +9,7 @@
 # VS Code
 .vscode/
 
+# pycache
+__pycache__/
+
+*.png
