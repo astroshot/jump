@@ -24,15 +24,19 @@ def load_config():
 def screenshot(pic_name):
     '''screenshot on android device
 
-    @param pic_name: name of screenshot picture
+    :param pic_name: name of screenshot picture
+    :return:
     '''
     os.system('adb shell screencap -p /sdcard/{}.png'.format(pic_name))
     os.system('adb pull /sdcard/{}.png'.format(pic_name))
 
 
 def jump(distance):
+    '''convert distance to press time
+    :param distance: 
+    '''
     coefficient = config['coefficient']
-    MIN_PRESS_TIME = config['MIN_PRESS_TIME']
+    # MIN_PRESS_TIME = config['MIN_PRESS_TIME']
 
     press_time = distance * coefficient
     # press_time = max(press_time, MIN_PRESS_TIME)
@@ -109,7 +113,7 @@ def main():
         else:  # then perform edge detection
             img_rgb = cv2.GaussianBlur(img_rgb, (5, 5), 0)
             canny_img = cv2.Canny(img_rgb, 1, 10)
-            H, W = canny_img.shape
+            # H, W = canny_img.shape
 
             for k in range(max_loc_player[1] - 10, max_loc_player[1] + 189):
                 for j in range(max_loc_player[0] - 10, max_loc_player[0] + 189):
@@ -124,14 +128,10 @@ def main():
         jump_count += 1
         if jump_count == next_rest:
             print('you have jumped {} times, just rest {} seconds.'.format(jump_count, rest_time))
-            for l in range(rest_time):
-                sys.stdout.write('we will continue after {} seconds'.format(rest_time - l))
-                sys.stdout.flush()
-                time.sleep(1)
+            time.sleep(rest_time)
             jump_count, next_rest, rest_time = (0, random.randrange(40, 100), random.randrange(10, 40))
         time.sleep(random.uniform(1.0, 1.5))
 
 
 if __name__ == '__main__':
     main()
-
